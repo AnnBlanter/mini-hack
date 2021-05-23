@@ -8,35 +8,45 @@ import {
   Code,
   Grid,
   theme,
+  Heading,
+  IconButton,
+  List,
+  ListItem,
+  SearchIcon
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { Logo } from './Logo';
 
+const menu = [{
+  name: 'Cуп',
+  items: ['Борщ', 'Солянка']
+}, {
+  name: 'Салаты и закуски',
+  items: ['Ольвье', 'Рулетики с ветчиной']
+}];
+
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
+      <Heading>I'm a Heading</Heading>
+      {menu.map(({name, items}) => (
+        <>
+          <Heading as="h3">{name}</Heading>
+          <List>
+          {
+            items.map((item) => (<>
+              <ListItem>
+                { item }
+              </ListItem>
+            </>))
+          }
+          </List>
+        </>
+      ))}
     </ChakraProvider>
   );
 }
 
 export default App;
+
+//          <ColorModeSwitcher justifySelf="flex-end" />
